@@ -27,13 +27,17 @@ public class ProyectoProgramaMM {
         lable.setBounds(0, 0, 1400, 800);
         
         JButton btnCliente = new JButton("Cliente");
-        btnCliente.setBounds(200, 300, 180, 40);
+        btnCliente.setBounds(200, 250, 180, 40);
+        
+        JButton btnProfesor = new JButton("Profesor");
+        btnProfesor.setBounds(200, 350, 180, 40);
 
         JButton btnClases = new JButton("Clases");
-        btnClases.setBounds(200, 400, 180, 40);
+        btnClases.setBounds(200, 450, 180, 40);
 
 
         frame.add(btnClases);
+        frame.add(btnProfesor);
         frame.add(btnCliente);
         frame.add(lable);
 
