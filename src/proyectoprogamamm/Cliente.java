@@ -30,5 +30,7 @@ public class Cliente {
         
         frame1.setVisible(
                 true);
-}
+    }
+    
+
 }

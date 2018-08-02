@@ -2,10 +2,12 @@
 package proyectoprogamamm;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 
 public class ProyectoProgramaMM {
@@ -34,6 +36,12 @@ public class ProyectoProgramaMM {
 
         JButton btnClases = new JButton("Clases");
         btnClases.setBounds(200, 450, 180, 40);
+        
+        btnCliente.addActionListener(
+                (ActionEvent e) -> {
+                    System.out.println("lol");
+                }
+        );
 
 
         frame.add(btnClases);
