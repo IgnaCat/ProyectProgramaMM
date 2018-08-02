@@ -22,7 +22,7 @@ public class ProyectoProgramaMM {
 
         frame.setLayout(null);
         
-        ImageIcon ii = new ImageIcon("/home/ignacio/Escritorio/ProyectProgramaMM/Imagen/gym.png");
+        ImageIcon ii = new ImageIcon("Imagen/gym.png");
         JLabel lable = new JLabel(ii);
         lable.setBounds(0, 0, 1400, 800);
         
