@@ -7,15 +7,21 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+import javax.swing.JTabbedPane;
 
 
 public class ProyectoProgramaMM {
     
     private JFrame frame;
+    private JTabbedPane pane;
+    private ImageIcon ii;
+    private JLabel lable;
 
     
+    private static Cliente c = new Cliente();
+    
     public ProyectoProgramaMM(){
+               
         frame = new JFrame("M&M Gym");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1300, 800);
@@ -24,8 +30,11 @@ public class ProyectoProgramaMM {
 
         frame.setLayout(null);
         
-        ImageIcon ii = new ImageIcon("Imagen/gym.png");
-        JLabel lable = new JLabel(ii);
+        pane = new JTabbedPane();
+        pane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
+        
+        ii = new ImageIcon("Imagen/gym.png");
+        lable = new JLabel(ii);
         lable.setBounds(0, 0, 1400, 800);
         
         JButton btnCliente = new JButton("Cliente");
@@ -39,21 +48,25 @@ public class ProyectoProgramaMM {
         
         btnCliente.addActionListener(
                 (ActionEvent e) -> {
-                    System.out.println("lol");
+                    c.setVisible(true);
+                    frame.setVisible(false);
                 }
         );
 
-
+        frame.add(pane);
         frame.add(btnClases);
         frame.add(btnProfesor);
         frame.add(btnCliente);
         frame.add(lable);
-
-	 
+         
    
         frame.setVisible(
                 true);
         
+    }
+    
+    public void setVisible(boolean b){
+        frame.setVisible(b);
     }
     
    
