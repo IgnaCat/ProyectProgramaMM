@@ -1,2 +1,10 @@
 # ProyectProgramaMM
-Proyecto de un sistema deñ gym
+
+git status
+git add .
+git status
+git commit -m "lo q ize"
+git pull
+git push	
+
+
