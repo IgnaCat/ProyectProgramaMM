@@ -34,7 +34,7 @@ public class NuevoCliente {
     private JButton btnCancelar;
     private JButton btnAgregar;
     
-    
+
 
     public NuevoCliente(){
         
@@ -67,8 +67,16 @@ public class NuevoCliente {
         lblFechaMes = new JLabel("Mes");
         lblFechaMes.setBounds(200, 30, 100, 510);
         
-        lblFecha = new JLabel("Fecha");
+        lblFecha = new JLabel("Fecha:");
         lblFecha.setBounds(40, 30, 100, 510);
+        
+        lblProfesor = new JLabel("Profesor");
+        lblProfesor.setBounds(450, 30, 100, 30);
+        
+        lblDni = new JLabel("DNI");
+        lblDni.setBounds(475, 30, 100, 150);
+        
+        
         
         txtNombre = new JTextField();
         txtNombre.setBounds(110, 30, 160, 30);
@@ -91,6 +99,12 @@ public class NuevoCliente {
         txtFechaAño = new JTextField();
         txtFechaAño.setBounds(340, 270, 60, 30);
         
+        txtProfesor = new JTextField();
+        txtProfesor.setBounds(525, 30, 160, 30);
+        
+        txtDni = new JTextField();
+        txtDni.setBounds(525, 90, 160, 30);
+        
         btnCancelar = new JButton("Cancelar");
         btnCancelar.setBounds(450, 270, 100, 25);
         
@@ -102,6 +116,14 @@ public class NuevoCliente {
                     frame2.setVisible(false);
                }
         );
+       
+       btnAgregar.addActionListener(
+                (ActionEvent e) -> {
+                    
+               }
+        );
+       
+       
         
        
         
@@ -123,6 +145,10 @@ public class NuevoCliente {
         frame2.add(txtFechaAño);
         frame2.add(btnAgregar);
         frame2.add(btnCancelar);
+        frame2.add(lblProfesor);
+        frame2.add(lblDni);
+        frame2.add(txtProfesor);
+        frame2.add(txtDni);
         
         frame2.setVisible(
                 true);

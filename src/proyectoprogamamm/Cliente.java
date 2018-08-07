@@ -32,10 +32,10 @@ public class Cliente {
 
         frame1.setLayout(null);
         
-        Object rowData[][] = { { "Row1-Column1", "Row1-Column2", "Row1-Column3", "dcsds", "dfedfdd", "cgccfc", "uguvvih"  },
-                               { "Row2-Column1", "Row2-Column2", "Row2-Column3", "dcsds", "dfedfdd", "cgccfc", "uguvvih"  } };
+        Object rowData[][] = { { "Row1-Column1", "Row1-Column2", "Row1-Column3", "dcsds", "dfedfdd", "cgccfc", "uguvvih" ,"kjvfsjv" },
+                               { "Row2-Column1", "Row2-Column2", "Row2-Column3", "dcsds", "dfedfdd", "cgccfc", "uguvvih","ievbejrv"  } };
         
-        Object columnNames[] = { "Numero", "Nombre", "Apellido", "DNI", "Fecha de Inicio", "Direccion", "Telefono" };
+        Object columnNames[] = { "Numero", "Nombre", "Apellido", "DNI", "Fecha de Inicio", "Profesor","Direccion", "Telefono" };
         
         
         table = new JTable(rowData, columnNames);
