@@ -35,7 +35,7 @@ public class Inicio {
     private ImageIcon ii;
     private JLabel lable;
 
-    private static Cliente c = new Cliente();
+    public static Cliente c = new Cliente();
 
 
     public Inicio() {   

@@ -34,7 +34,7 @@ public class NuevoCliente {
     private JButton btnCancelar;
     private JButton btnAgregar;
     
-
+//    Cliente cliente = new Cliente();
 
     public NuevoCliente(){
         
@@ -119,7 +119,7 @@ public class NuevoCliente {
        
        btnAgregar.addActionListener(
                 (ActionEvent e) -> {
-                    System.out.println("lol");
+                  frame2.setVisible(false);  
                }
         );
        
