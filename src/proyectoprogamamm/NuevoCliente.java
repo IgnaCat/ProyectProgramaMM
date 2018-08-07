@@ -119,7 +119,7 @@ public class NuevoCliente {
        
        btnAgregar.addActionListener(
                 (ActionEvent e) -> {
-                    
+                    System.out.println("lol");
                }
         );
        
