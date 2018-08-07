@@ -2,6 +2,7 @@
 package proyectoprogamamm;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -32,6 +33,8 @@ public class NuevoCliente {
     private JLabel lblFecha;
     private JButton btnCancelar;
     private JButton btnAgregar;
+    
+    
 
     public NuevoCliente(){
         
@@ -93,6 +96,12 @@ public class NuevoCliente {
         
         btnAgregar = new JButton("Agregar");
         btnAgregar.setBounds(600, 270, 100, 25);
+        
+       btnCancelar.addActionListener(
+                (ActionEvent e) -> {
+                    frame2.setVisible(false);
+               }
+        );
         
        
         
