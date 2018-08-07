@@ -35,9 +35,8 @@ public class Inicio {
     private ImageIcon ii;
     private JLabel lable;
 
-    public static Cliente c = new Cliente();
-
-
+//    public static Cliente cliente = new Cliente();
+    
     public Inicio() {   
                
         frame = new JFrame("M&M Gym");
@@ -66,7 +65,7 @@ public class Inicio {
 
         btnCliente.addActionListener(
                 (ActionEvent e) -> {
-                    c.setVisible(true);
+//                    cliente.setVisible(true);
                     frame.setVisible(false);
                 }
         );
@@ -79,7 +78,8 @@ public class Inicio {
 
         frame.setVisible(
                 true);
-        c.setVisible(false);
+//        cliente.setVisible(false);
+
 
     }
 

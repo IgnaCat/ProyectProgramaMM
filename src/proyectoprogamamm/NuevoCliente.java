@@ -34,7 +34,6 @@ public class NuevoCliente {
     private JButton btnCancelar;
     private JButton btnAgregar;
     
-//    Cliente cliente = new Cliente();
 
     public NuevoCliente(){
         

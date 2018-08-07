@@ -21,7 +21,7 @@ public class Cliente {
     private JScrollPane scroll;
     private JTextField textField;
     
-    private static NuevoCliente nuevoCliente = new NuevoCliente();
+//    private static NuevoCliente nuevoCliente = new NuevoCliente();
     
     public Cliente() {
         frame1 = new JFrame("Cliente");
@@ -62,7 +62,7 @@ public class Cliente {
         
         btnNuevoCliente.addActionListener(
                 (ActionEvent e) -> {
-                    nuevoCliente.setVisible(true);
+//                    nuevoCliente.setVisible(true);
                 }
         );
         
@@ -77,7 +77,7 @@ public class Cliente {
         frame1.setVisible(
                 true);  
         
-        nuevoCliente.setVisible(false);
+//        nuevoCliente.setVisible(false);
     }
     
     public void setVisible(boolean b){
