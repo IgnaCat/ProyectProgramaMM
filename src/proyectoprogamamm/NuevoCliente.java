@@ -31,10 +31,10 @@ public class NuevoCliente {
     private JLabel lblFecha;
     private JButton btnCancelar;
     private JButton btnAgregar;
-
-    ProyectoProgramaMM mm = new ProyectoProgramaMM();
-    public NuevoCliente() {
-
+    private final VentanaTablaClientes parent;
+    
+    public NuevoCliente(VentanaTablaClientes p) {
+        parent = p;
         frame2 = new JFrame("Nuevo Cliente");
         frame2.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame2.setSize(800, 600);
@@ -115,7 +115,16 @@ public class NuevoCliente {
         btnAgregar.addActionListener(
                 (ActionEvent e) -> {
                     frame2.setVisible(false);
-                    mm.agregarATabla();
+                    Cliente client = new Cliente(getTxtNombre().getText(),
+                                    getTxtApellido().getText(),
+                                    getTxtDni().getText(),
+                                    getTxtFechaDia().getText(),
+                                    getTxtFechaMes().getText(),
+                                    getTxtFechaAño().getText(),
+                                    getTxtProfesor().getText(),
+                                    getTxtDireccion().getText(),
+                                    getTxtTelefono().getText());
+                    parent.addClienteRow(client.getCampos());
                 }
         );
 

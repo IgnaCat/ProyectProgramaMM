@@ -17,7 +17,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
-import proyectoprogamamm.Cliente;
+import proyectoprogamamm.VentanaTablaClientes;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -34,17 +34,14 @@ public class Inicio {
     private JTabbedPane pane;
     private ImageIcon ii;
     private JLabel lable;
-
-//    public static Cliente cliente = new Cliente();
-    ProyectoProgramaMM mm = new ProyectoProgramaMM();
     
     public Inicio() {   
-               
         frame = new JFrame("M&M Gym");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1300, 800);
         frame.getContentPane().setBackground(Color.lightGray);
         frame.setResizable(false);
+        
 
         frame.setLayout(null);
 
@@ -67,7 +64,7 @@ public class Inicio {
         btnCliente.addActionListener(
                 (ActionEvent e) -> {
 //                    cliente.setVisible(true);
-                    mm.abrirCliente();
+                    VentanaTablaClientes cliente = new VentanaTablaClientes();
                     frame.setVisible(false);
                 }
         );

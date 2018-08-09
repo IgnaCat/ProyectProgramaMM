@@ -16,18 +16,19 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 
-public class Cliente {
+public class VentanaTablaClientes {
     
     private JFrame frame1;
     private JTable table;
     private JScrollPane scroll;
     private JTextField textField;
     private DefaultTableModel model;
+    private VentanaTablaClientes me = this;
+
     
 //    private static NuevoCliente nuevoCliente = new NuevoCliente();
-    ProyectoProgramaMM mm = new ProyectoProgramaMM();
     
-    public Cliente() {
+    public VentanaTablaClientes() {
         frame1 = new JFrame("Cliente");
         frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame1.setSize(1300, 800);
@@ -79,8 +80,8 @@ public class Cliente {
         btnNuevoCliente.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //                    nuevoCliente.setVisible(true);
-                mm.abrirNuevoCliente();
+                NuevoCliente nuevoCliente = new NuevoCliente(me);
+                
             }
         });
         
@@ -124,6 +125,10 @@ public class Cliente {
     
     public void setVisible(boolean b){
         frame1.setVisible(b);
+    }
+
+    void addClienteRow(String[] cliente) {
+         this.getModel().addRow(cliente);
     }
     
 
