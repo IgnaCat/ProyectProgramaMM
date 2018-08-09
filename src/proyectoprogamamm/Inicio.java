@@ -36,6 +36,7 @@ public class Inicio {
     private JLabel lable;
 
 //    public static Cliente cliente = new Cliente();
+    ProyectoProgramaMM mm = new ProyectoProgramaMM();
     
     public Inicio() {   
                
@@ -66,6 +67,7 @@ public class Inicio {
         btnCliente.addActionListener(
                 (ActionEvent e) -> {
 //                    cliente.setVisible(true);
+                    mm.abrirCliente();
                     frame.setVisible(false);
                 }
         );
@@ -79,6 +81,7 @@ public class Inicio {
         frame.setVisible(
                 true);
 //        cliente.setVisible(false);
+//        mm.cerrarCliente();
 
 
     }
