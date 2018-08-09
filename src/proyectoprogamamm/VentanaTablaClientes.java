@@ -22,9 +22,8 @@ public class VentanaTablaClientes {
     private JTable table;
     private JScrollPane scroll;
     private JTextField textField;
-    private DefaultTableModel model;
+    private DefaultTableModel model = new DefaultTableModel();;
     private VentanaTablaClientes me = this;
-
     
 //    private static NuevoCliente nuevoCliente = new NuevoCliente();
     
@@ -37,15 +36,9 @@ public class VentanaTablaClientes {
 
         frame1.setLayout(null);
         
-//        Object columnNames[] = { "Numero", "Nombre", "Apellido", "DNI", "Fecha de Inicio", "Profesor","Direccion", "Telefono" };
-//
-//        
-//        Object rowData[][] = { { "Row1-Column1", "Row1-Column2", "Row1-Column3", "dcsds", "dfedfdd", "cgccfc", "uguvvih" ,"kjvfsjv" },};
-//       
-//        table = new JTable(rowData, columnNames);
-        DefaultTableModel model = new DefaultTableModel();
+        
+        
         table = new JTable(model);
-        model.addColumn("Numero");
         model.addColumn("Nombre");
         model.addColumn("Apellido");
         model.addColumn("DNI");
@@ -128,7 +121,7 @@ public class VentanaTablaClientes {
     }
 
     void addClienteRow(String[] cliente) {
-         this.getModel().addRow(cliente);
+        this.getModel().addRow(cliente);
     }
     
 

@@ -110,7 +110,7 @@ public class Cliente {
         campos[0] = nombre;
         campos[1] = apellido;
         campos[2] = dni;
-        campos[3] = fechaDia + "/" + fechaMes + "/" + fechaAño + "/";
+        campos[3] = fechaDia + "/" + fechaMes + "/" + fechaAño;
         campos[4] = profesor;
         campos[5] = direccion;
         campos[6] = telefono;
