@@ -8,12 +8,18 @@ package proyectoprogamamm;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 
 public class VentanaTablaClientes {
@@ -21,9 +27,12 @@ public class VentanaTablaClientes {
     private JFrame frame1;
     private JTable table;
     private JScrollPane scroll;
-    private JTextField textField;
+    private JTextField txtBuscar;
     private DefaultTableModel model = new DefaultTableModel();;
     private VentanaTablaClientes me = this;
+    private JComboBox comboBuscar;
+    private JLabel lblBuscar;
+    private TableRowSorter trsFiltro;
     
 //    private static NuevoCliente nuevoCliente = new NuevoCliente();
     
@@ -56,18 +65,29 @@ public class VentanaTablaClientes {
         scroll = new JScrollPane(table);
         scroll.setBounds(400, 25, 840, 700);
         
-        textField = new JTextField();
-        textField.setToolTipText("Escriba algo aqui");
-        textField.setBounds(120, 60, 200, 35);
+        lblBuscar = new JLabel("Buscar por:");
+        lblBuscar.setBounds(120,60,200,30);
+        
+        comboBuscar = new JComboBox();
+        comboBuscar.addItem("Nombre");
+        comboBuscar.addItem("Apellido");
+        comboBuscar.addItem("DNI");
+        comboBuscar.addItem("Fecha de Inicio");
+        comboBuscar.addItem("Profesor");
+        comboBuscar.addItem("Direccion");
+        comboBuscar.addItem("Telefono");
+        comboBuscar.setBounds(120,100,200,30);
+        
+        txtBuscar = new JTextField();
+        txtBuscar.setToolTipText("Busque algo aqui");
+        txtBuscar.setBounds(120, 150, 200, 35);
+        
         
         JButton btnBuscar = new JButton("Buscar");
-        btnBuscar.setBounds(120, 105, 200, 30);
-        
-        JButton btnActualizar = new JButton("Actulizar Tabla");
-        btnActualizar.setBounds(120, 150, 200, 30);
+        btnBuscar.setBounds(120, 200, 200, 30);
         
         JButton btnNuevoCliente = new JButton("Nuevo Cliente");
-        btnNuevoCliente.setBounds(120, 220, 200, 30);
+        btnNuevoCliente.setBounds(120, 280, 200, 30);
         
         
         btnNuevoCliente.addActionListener(new ActionListener() {
@@ -78,11 +98,22 @@ public class VentanaTablaClientes {
             }
         });
         
-        
+        btnBuscar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String cadena = (txtBuscar.getText());
+                
+                trsFiltro = new TableRowSorter(table.getModel());
+                table.setRowSorter(trsFiltro);
+                filtro();
+            }
+        });
+           
         frame1.add(btnNuevoCliente);
-        frame1.add(btnActualizar);
+        frame1.add(lblBuscar);
+        frame1.add(comboBuscar);
+        frame1.add(txtBuscar);
         frame1.add(btnBuscar);
-        frame1.add(textField);
         frame1.add(scroll);
         
         
@@ -112,8 +143,8 @@ public class VentanaTablaClientes {
         return model;
     }
 
-    public JTextField getTextField() {
-        return textField;
+    public JTextField getTxtBuscar() {
+        return txtBuscar;
     }
     
     public void setVisible(boolean b){
@@ -123,6 +154,34 @@ public class VentanaTablaClientes {
     void addClienteRow(String[] cliente) {
         this.getModel().addRow(cliente);
     }
+    
+    public void filtro() {
+        int columnaABuscar = 0;
+        if (comboBuscar.getSelectedItem().toString() == "Nombre") {
+            columnaABuscar = 0;
+        }
+        if (comboBuscar.getSelectedItem().toString() == "Apellido") {
+            columnaABuscar = 1;
+        }
+        if (comboBuscar.getSelectedItem().toString() == "DNI") {
+            columnaABuscar = 2;
+        }
+        if (comboBuscar.getSelectedItem().toString() == "Fecha de Inicio") {
+            columnaABuscar = 2;
+        }
+        if (comboBuscar.getSelectedItem().toString() == "Profesor") {
+            columnaABuscar = 2;
+        }
+        if (comboBuscar.getSelectedItem().toString() == "Direccion") {
+            columnaABuscar = 2;
+        }
+        if (comboBuscar.getSelectedItem().toString() == "Telefono") {
+            columnaABuscar = 2;
+        }
+        trsFiltro.setRowFilter(RowFilter.regexFilter(txtBuscar.getText(), columnaABuscar));
+}
+    
+
     
 
 }
