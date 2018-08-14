@@ -93,7 +93,7 @@ public class VentanaTablaClientes {
         JButton btnEliminar = new JButton("Eliminar ");
         btnEliminar.setBounds(120, 240, 200, 30);
         
-         JButton btnVolver = new JButton("Volver");
+        JButton btnVolver = new JButton("Volver");
         btnVolver.setBounds(120, 450, 200, 30);
         
          btnVolver.addActionListener(new ActionListener() {
