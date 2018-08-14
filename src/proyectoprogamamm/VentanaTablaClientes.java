@@ -19,6 +19,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 
@@ -87,8 +88,32 @@ public class VentanaTablaClientes {
         btnBuscar.setBounds(120, 200, 200, 30);
         
         JButton btnNuevoCliente = new JButton("Nuevo Cliente");
-        btnNuevoCliente.setBounds(120, 280, 200, 30);
+        btnNuevoCliente.setBounds(120, 400, 200, 30);
         
+        JButton btnEliminar = new JButton("Eliminar ");
+        btnEliminar.setBounds(120, 240, 200, 30);
+        
+         JButton btnVolver = new JButton("Volver");
+        btnVolver.setBounds(120, 450, 200, 30);
+        
+         btnVolver.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Inicio inicio = new Inicio();
+                frame1.setVisible(false);
+            }
+        });
+        
+        btnEliminar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int fila = table.getSelectedRow();
+                if (fila >= 0) {
+                       model.removeRow(fila);
+        }
+                
+            }
+        });
         
         btnNuevoCliente.addActionListener(new ActionListener() {
             @Override
@@ -115,6 +140,8 @@ public class VentanaTablaClientes {
         frame1.add(txtBuscar);
         frame1.add(btnBuscar);
         frame1.add(scroll);
+        frame1.add(btnEliminar);
+        frame1.add(btnVolver);
         
         
         frame1.setVisible(
@@ -167,16 +194,16 @@ public class VentanaTablaClientes {
             columnaABuscar = 2;
         }
         if (comboBuscar.getSelectedItem().toString() == "Fecha de Inicio") {
-            columnaABuscar = 2;
+            columnaABuscar = 3;
         }
         if (comboBuscar.getSelectedItem().toString() == "Profesor") {
-            columnaABuscar = 2;
+            columnaABuscar = 4;
         }
         if (comboBuscar.getSelectedItem().toString() == "Direccion") {
-            columnaABuscar = 2;
+            columnaABuscar = 5;
         }
         if (comboBuscar.getSelectedItem().toString() == "Telefono") {
-            columnaABuscar = 2;
+            columnaABuscar = 6;
         }
         trsFiltro.setRowFilter(RowFilter.regexFilter(txtBuscar.getText(), columnaABuscar));
 }

@@ -58,9 +58,6 @@ public class Inicio {
         JButton btnProfesor = new JButton("Profesor");
         btnProfesor.setBounds(200, 350, 180, 40);
 
-        JButton btnClases = new JButton("Clases");
-        btnClases.setBounds(200, 450, 180, 40);
-
         btnCliente.addActionListener(
                 (ActionEvent e) -> {
 //                    cliente.setVisible(true);
@@ -70,7 +67,6 @@ public class Inicio {
         );
 
         frame.add(pane);
-        frame.add(btnClases);
         frame.add(btnProfesor);
         frame.add(btnCliente);
         frame.add(lable);
