@@ -18,6 +18,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
 import proyectoprogamamm.VentanaTablaClientes;
+import proyectoprogamamm.VentanaTablaProfesor;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -62,6 +63,14 @@ public class Inicio {
                 (ActionEvent e) -> {
 //                    cliente.setVisible(true);
                     VentanaTablaClientes cliente = new VentanaTablaClientes();
+                    frame.setVisible(false);
+                }
+        );
+        
+         btnProfesor.addActionListener(
+                (ActionEvent e) -> {
+//                    cliente.setVisible(true);
+                    VentanaTablaProfesor profesor = new VentanaTablaProfesor();
                     frame.setVisible(false);
                 }
         );
