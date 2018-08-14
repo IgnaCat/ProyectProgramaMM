@@ -5,84 +5,116 @@
  */
 package proyectoprogamamm;
 
-import java.awt.Color;
-import java.awt.event.ActionEvent;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-
-
+/**
+ *
+ * @author ignacio
+ */
 public class Cliente {
-    
-    private JFrame frame1;
-    private JTable table;
-    private JScrollPane scroll;
-    private JTextField textField;
-    
-    private static NuevoCliente nuevoCliente = new NuevoCliente();
-    
-    public Cliente() {
-        frame1 = new JFrame("Cliente");
-        frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame1.setSize(1300, 800);
-        frame1.getContentPane().setBackground(Color.lightGray);
-        frame1.setResizable(false);
+    private String nombre;
+    private String apellido;
+    private String dni;
+    private String fechaDia;
+    private String fechaMes;
+    private String fechaAño;
+    //private Profesor profesor;
+    private String profesor;
+    private String direccion;
+    private String telefono;
 
-        frame1.setLayout(null);
-        
-        Object rowData[][] = { { "Row1-Column1", "Row1-Column2", "Row1-Column3", "dcsds", "dfedfdd", "cgccfc", "uguvvih" ,"kjvfsjv" },
-                               { "Row2-Column1", "Row2-Column2", "Row2-Column3", "dcsds", "dfedfdd", "cgccfc", "uguvvih","ievbejrv"  } };
-        
-        Object columnNames[] = { "Numero", "Nombre", "Apellido", "DNI", "Fecha de Inicio", "Profesor","Direccion", "Telefono" };
-        
-        
-        table = new JTable(rowData, columnNames);
-        table.setFont(new java.awt.Font("Tahoma", 30, 15));
-        table.setRowHeight(25);
-//        table.getColumnModel().getColumn(0).setPreferredWidth(200);       
+    public Cliente(String nombre, String apellido, String dni, String fechaDia, String fechaMes, String fechaAño, String profesor, String direccion, String telefono) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+        this.fechaDia = fechaDia;
+        this.fechaMes = fechaMes;
+        this.fechaAño = fechaAño;
+        this.profesor = profesor;
+        this.direccion = direccion;
+        this.telefono = telefono;
+    }
 
-        scroll = new JScrollPane(table);
-        scroll.setBounds(400, 25, 840, 700);
-        
-        textField = new JTextField();
-        textField.setToolTipText("Escriba algo aqui");
-        textField.setBounds(120, 60, 200, 35);
-        
-        JButton btnBuscar = new JButton("Buscar");
-        btnBuscar.setBounds(120, 105, 200, 30);
-        
-        JButton btnActualizar = new JButton("Actulizar Tabla");
-        btnActualizar.setBounds(120, 150, 200, 30);
-        
-        JButton btnNuevoCliente = new JButton("Nuevo Cliente");
-        btnNuevoCliente.setBounds(120, 220, 200, 30);
-        
-        
-        btnNuevoCliente.addActionListener(
-                (ActionEvent e) -> {
-                    nuevoCliente.setVisible(true);
-                }
-        );
-        
-        
-        frame1.add(btnNuevoCliente);
-        frame1.add(btnActualizar);
-        frame1.add(btnBuscar);
-        frame1.add(textField);
-        frame1.add(scroll);
-        
-        
-        frame1.setVisible(
-                true);  
-        
-        nuevoCliente.setVisible(false);
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
+    public String getFechaDia() {
+        return fechaDia;
+    }
+
+    public void setFechaDia(String fechaDia) {
+        this.fechaDia = fechaDia;
+    }
+
+    public String getFechaMes() {
+        return fechaMes;
+    }
+
+    public void setFechaMes(String fechaMes) {
+        this.fechaMes = fechaMes;
+    }
+
+    public String getFechaAño() {
+        return fechaAño;
+    }
+
+    public void setFechaAño(String fechaAño) {
+        this.fechaAño = fechaAño;
+    }
+
+    public String getProfesor() {
+        return profesor;
+    }
+
+    public void setProfesor(String profesor) {
+        this.profesor = profesor;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
     
-    public void setVisible(boolean b){
-        frame1.setVisible(b);
+    public String[] getCampos(){
+        String[] campos = new String[7];
+        campos[0] = nombre;
+        campos[1] = apellido;
+        campos[2] = dni;
+        campos[3] = fechaDia + "/" + fechaMes + "/" + fechaAño;
+        campos[4] = profesor;
+        campos[5] = direccion;
+        campos[6] = telefono;
+        return campos;        
     }
-    
-
+        
 }
