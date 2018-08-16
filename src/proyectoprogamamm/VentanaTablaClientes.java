@@ -6,10 +6,12 @@
 package proyectoprogamamm;
 
 import java.awt.Color;
+import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.File;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -23,6 +25,7 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 
+
 public class VentanaTablaClientes{
     
     private JFrame frame1;
@@ -34,6 +37,8 @@ public class VentanaTablaClientes{
     private JComboBox comboBuscar;
     private JLabel lblBuscar;
     private TableRowSorter trsFiltro;
+    private File file;
+    private String nom_files;
     
 //    private static NuevoCliente nuevoCliente = new NuevoCliente();
     
@@ -96,6 +101,16 @@ public class VentanaTablaClientes{
         JButton btnVolver = new JButton("Volver");
         btnVolver.setBounds(120, 450, 200, 30);
         
+        JButton btnExportar = new JButton("Exportar");
+        btnExportar.setBounds(120, 500, 200, 30);
+        
+        btnExportar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+            }
+        });
+        
          btnVolver.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -142,6 +157,7 @@ public class VentanaTablaClientes{
         frame1.add(scroll);
         frame1.add(btnEliminar);
         frame1.add(btnVolver);
+        frame1.add(btnExportar);
         
         
         frame1.setVisible(
