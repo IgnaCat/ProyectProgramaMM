@@ -3,9 +3,11 @@ package proyectoprogamamm;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+//import proyectoprogamamm.Profesor;
 
 public class NuevoCliente {
 
@@ -25,13 +27,14 @@ public class NuevoCliente {
     private JTextField txtFechaDia;
     private JTextField txtFechaMes;
     private JTextField txtFechaAño;
-    private JTextField txtProfesor;
+    private JComboBox txtProfesor;
     private JTextField txtDireccion;
     private JTextField txtTelefono;
     private JLabel lblFecha;
     private JButton btnCancelar;
     private JButton btnAgregar;
     private final VentanaTablaClientes parent;
+
     
     public NuevoCliente(VentanaTablaClientes p) {
         parent = p;
@@ -94,7 +97,8 @@ public class NuevoCliente {
         txtFechaAño = new JTextField();
         txtFechaAño.setBounds(340, 270, 60, 30);
 
-        txtProfesor = new JTextField();
+        txtProfesor = new JComboBox();
+        txtProfesor.addItem("lol");
         txtProfesor.setBounds(525, 30, 160, 30);
 
         txtDni = new JTextField();
@@ -121,7 +125,7 @@ public class NuevoCliente {
                                     getTxtFechaDia().getText(),
                                     getTxtFechaMes().getText(),
                                     getTxtFechaAño().getText(),
-                                    getTxtProfesor().getText(),
+                                    getTxtProfesor().getSelectedItem().toString(),
                                     getTxtDireccion().getText(),
                                     getTxtTelefono().getText());
                     parent.addClienteRow(client.getCampos());
@@ -226,7 +230,7 @@ public class NuevoCliente {
         return txtFechaAño;
     }
 
-    public JTextField getTxtProfesor() {
+    public JComboBox getTxtProfesor() {
         return txtProfesor;
     }
 

@@ -22,6 +22,10 @@ public class Profesor {
         this.clase = clase;
     }
 
+    public Profesor() {
+    }
+    
+
 
     public String getNombre() {
         return nombre;
