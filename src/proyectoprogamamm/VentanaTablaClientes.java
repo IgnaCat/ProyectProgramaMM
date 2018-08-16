@@ -6,16 +6,22 @@
 package proyectoprogamamm;
 
 import java.awt.Color;
+import java.awt.HeadlessException;
 import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -39,6 +45,7 @@ public class VentanaTablaClientes{
     private TableRowSorter trsFiltro;
     private File file;
     private String nom_files;
+    private Cliente cliente;
     
 //    private static NuevoCliente nuevoCliente = new NuevoCliente();
     
@@ -104,12 +111,38 @@ public class VentanaTablaClientes{
         JButton btnExportar = new JButton("Exportar");
         btnExportar.setBounds(120, 500, 200, 30);
         
-        btnExportar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                
+        btnExportar.addActionListener((ActionEvent e) -> {
+            JFileChooser jF1 = new JFileChooser();
+            String ruta = "";
+            try {
+                if (jF1.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+                    ruta = jF1.getSelectedFile().getAbsolutePath();
+                }
+            } catch (HeadlessException ex) {
+                ex.printStackTrace();
+            }
+
+            File filename = new File(ruta);
+            
+            String[] contenido = cliente.getCampos();
+            
+            JFrame frame1 = new JFrame();
+
+            try {
+
+                try (BufferedWriter fileOut = new BufferedWriter(new FileWriter(filename))) {
+                    for(int i = 0; i<cliente.getCampos().length;i++){ 
+                        fileOut.write(contenido[i] + " - ");
+                    }
+                }
+
+                JOptionPane.showMessageDialog(frame1, "Su archivo ha sido guardado en el Escritorio");
+
+            } catch (IOException ioe) {
+                System.out.println("Exception Caught : " + ioe.getMessage());
             }
         });
+
         
          btnVolver.addActionListener(new ActionListener() {
             @Override
