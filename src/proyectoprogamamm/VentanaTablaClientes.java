@@ -124,19 +124,28 @@ public class VentanaTablaClientes{
 
             File filename = new File(ruta);
             
-            String[] contenido = cliente.getCampos();
-            
+            String[] contenido = new String[7];
+//            String[] contenido = cliente.getCampos();
+            contenido[0] = cliente.getNombre();
+            contenido[1] = cliente.getApellido();
+            contenido[2] = cliente.getDni();
+            contenido[3] = cliente.getFechaDia() + "/" + cliente.getFechaMes() + "/" + cliente.getFechaAño();
+            contenido[4] = cliente.getProfesor();
+            contenido[5] = cliente.getDireccion();
+            contenido[6] = cliente.getTelefono();
+
             JFrame frame1 = new JFrame();
 
             try {
 
                 try (BufferedWriter fileOut = new BufferedWriter(new FileWriter(filename))) {
-                    for(int i = 0; i<cliente.getCampos().length;i++){ 
+                    for(int i = 0; i<contenido.length;i++){ 
                         fileOut.write(contenido[i] + " - ");
                     }
                 }
 
                 JOptionPane.showMessageDialog(frame1, "Su archivo ha sido guardado en el Escritorio");
+                
 
             } catch (IOException ioe) {
                 System.out.println("Exception Caught : " + ioe.getMessage());
