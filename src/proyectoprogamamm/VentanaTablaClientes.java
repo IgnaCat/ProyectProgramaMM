@@ -108,7 +108,7 @@ public class VentanaTablaClientes{
         JButton btnVolver = new JButton("Volver");
         btnVolver.setBounds(120, 450, 200, 30);
         
-        JButton btnExportar = new JButton("Exportar");
+        JButton btnExportar = new JButton("Guardar");
         btnExportar.setBounds(120, 500, 200, 30);
         
         btnExportar.addActionListener((ActionEvent e) -> {
@@ -124,24 +124,29 @@ public class VentanaTablaClientes{
 
             File filename = new File(ruta);
             
-            String[] contenido = new String[7];
-//            String[] contenido = cliente.getCampos();
-            contenido[0] = cliente.getNombre();
-            contenido[1] = cliente.getApellido();
-            contenido[2] = cliente.getDni();
-            contenido[3] = cliente.getFechaDia() + "/" + cliente.getFechaMes() + "/" + cliente.getFechaAño();
-            contenido[4] = cliente.getProfesor();
-            contenido[5] = cliente.getDireccion();
-            contenido[6] = cliente.getTelefono();
+
 
             JFrame frame1 = new JFrame();
 
             try {
 
-                try (BufferedWriter fileOut = new BufferedWriter(new FileWriter(filename))) {
-                    for(int i = 0; i<contenido.length;i++){ 
-                        fileOut.write(contenido[i] + " - ");
+                try (BufferedWriter bfw = new BufferedWriter(new FileWriter(filename))) {
+//                    for(int i = 0; i<contenido.length;i++){ 
+//                        fileOut.write(contenido[i] + " - ");
+//                    }
+                 for (int i = 0 ; i < table.getRowCount(); i++) //realiza un barrido por filas.
+            {
+                for(int j = 0 ; j < table.getColumnCount();j++) //realiza un barrido por columnas.
+                {
+                    bfw.write((String)(table.getValueAt(i,j)));
+                    if (j < table.getColumnCount() -1) { //agrega separador "," si no es el ultimo elemento de la fila.
+                        bfw.write(" - ");
                     }
+                }
+                bfw.newLine(); //inserta nueva linea.
+            }
+                 bfw.close();
+
                 }
 
                 JOptionPane.showMessageDialog(frame1, "Su archivo ha sido guardado en el Escritorio");

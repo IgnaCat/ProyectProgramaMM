@@ -28,7 +28,6 @@ public class Inicio {
     private JTabbedPane pane;
     private ImageIcon ii;
     private JLabel lable;
-     VentanaTablaProfesor profesor = new VentanaTablaProfesor();
     public Inicio() {   
         frame = new JFrame("M&M Gym");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
