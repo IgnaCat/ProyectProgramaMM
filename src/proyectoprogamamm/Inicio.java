@@ -12,6 +12,9 @@ package proyectoprogamamm;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -54,7 +57,11 @@ public class Inicio {
         btnCliente.addActionListener(
                 (ActionEvent e) -> {
                    VentanaTablaClientes cliente = new VentanaTablaClientes();
-                   
+            try {
+                cliente.importar();
+            } catch (IOException ex) {
+                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+            }
                     frame.setVisible(false);
                 }
         );

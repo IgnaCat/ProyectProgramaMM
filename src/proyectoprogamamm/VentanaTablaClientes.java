@@ -12,10 +12,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
@@ -30,15 +35,14 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
+public class VentanaTablaClientes {
 
-
-public class VentanaTablaClientes{
-    
     private JFrame frame1;
     private JTable table;
     private JScrollPane scroll;
     private JTextField txtBuscar;
-    private DefaultTableModel model = new DefaultTableModel();;
+    private DefaultTableModel model = new DefaultTableModel();
+    ;
     private VentanaTablaClientes me = this;
     private JComboBox comboBuscar;
     private JLabel lblBuscar;
@@ -46,9 +50,8 @@ public class VentanaTablaClientes{
     private File file;
     private String nom_files;
     private Cliente cliente;
-    
+
 //    private static NuevoCliente nuevoCliente = new NuevoCliente();
-    
     public VentanaTablaClientes() {
         frame1 = new JFrame("Cliente");
         frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -57,9 +60,7 @@ public class VentanaTablaClientes{
         frame1.setResizable(false);
 
         frame1.setLayout(null);
-        
-        
-        
+
         table = new JTable(model);
         model.addColumn("Nombre");
         model.addColumn("Apellido");
@@ -68,19 +69,18 @@ public class VentanaTablaClientes{
         model.addColumn("Profesor");
         model.addColumn("Direccion");
         model.addColumn("Telefono");
-        
+
 //        model.addRow(new Object[]{"lol"});
-        
         table.setFont(new java.awt.Font("Tahoma", 30, 15));
         table.setRowHeight(25);
 //        table.getColumnModel().getColumn(0).setPreferredWidth(200);       
 
         scroll = new JScrollPane(table);
         scroll.setBounds(400, 25, 840, 700);
-        
+
         lblBuscar = new JLabel("Buscar por:");
-        lblBuscar.setBounds(120,60,200,30);
-        
+        lblBuscar.setBounds(120, 60, 200, 30);
+
         comboBuscar = new JComboBox();
         comboBuscar.addItem("Nombre");
         comboBuscar.addItem("Apellido");
@@ -89,113 +89,65 @@ public class VentanaTablaClientes{
         comboBuscar.addItem("Profesor");
         comboBuscar.addItem("Direccion");
         comboBuscar.addItem("Telefono");
-        comboBuscar.setBounds(120,100,200,30);
-        
+        comboBuscar.setBounds(120, 100, 200, 30);
+
         txtBuscar = new JTextField();
         txtBuscar.setToolTipText("Busque algo aqui");
         txtBuscar.setBounds(120, 150, 200, 35);
-        
-        
+
         JButton btnBuscar = new JButton("Buscar");
         btnBuscar.setBounds(120, 200, 200, 30);
-        
+
         JButton btnNuevoCliente = new JButton("Nuevo Cliente");
         btnNuevoCliente.setBounds(120, 400, 200, 30);
-        
+
         JButton btnEliminar = new JButton("Eliminar ");
         btnEliminar.setBounds(120, 240, 200, 30);
-        
+
         JButton btnVolver = new JButton("Volver");
         btnVolver.setBounds(120, 450, 200, 30);
-        
+
         JButton btnExportar = new JButton("Guardar");
         btnExportar.setBounds(120, 500, 200, 30);
         
         btnExportar.addActionListener((ActionEvent e) -> {
-            JFileChooser jF1 = new JFileChooser();
-            String ruta = "";
-            try {
-                if (jF1.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
-                    ruta = jF1.getSelectedFile().getAbsolutePath();
-                }
-            } catch (HeadlessException ex) {
-                ex.printStackTrace();
-            }
-
-            File filename = new File(ruta);
-            
-
-
-            JFrame frame1 = new JFrame();
-
-            try {
-
-                try (BufferedWriter bfw = new BufferedWriter(new FileWriter(filename))) {
-//                    for(int i = 0; i<contenido.length;i++){ 
-//                        fileOut.write(contenido[i] + " - ");
-//                    }
-                 for (int i = 0 ; i < table.getRowCount(); i++) //realiza un barrido por filas.
-            {
-                for(int j = 0 ; j < table.getColumnCount();j++) //realiza un barrido por columnas.
-                {
-                    bfw.write((String)(table.getValueAt(i,j)));
-                    if (j < table.getColumnCount() -1) { //agrega separador "," si no es el ultimo elemento de la fila.
-                        bfw.write(" - ");
-                    }
-                }
-                bfw.newLine(); //inserta nueva linea.
-            }
-                 bfw.close();
-
-                }
-
-                JOptionPane.showMessageDialog(frame1, "Su archivo ha sido guardado en el Escritorio");
-                
-
-            } catch (IOException ioe) {
-                System.out.println("Exception Caught : " + ioe.getMessage());
-            }
+            guardar();
         });
 
-        
-         btnVolver.addActionListener(new ActionListener() {
+        btnVolver.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Inicio inicio = new Inicio();
                 frame1.setVisible(false);
             }
         });
-        
+
         btnEliminar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int fila = table.getSelectedRow();
                 if (fila >= 0) {
-                       model.removeRow(fila);
-        }
-                
+                    model.removeRow(fila);
+                }
+
             }
         });
-        
+
         btnNuevoCliente.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 NuevoCliente nuevoCliente = new NuevoCliente(me);
-                
+
             }
         });
-        
+
         btnBuscar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String cadena = (txtBuscar.getText());
-                
-                trsFiltro = new TableRowSorter(table.getModel());
-                table.setRowSorter(trsFiltro);
-                filtro();
+                buscar();
             }
         });
-           
+
         frame1.add(btnNuevoCliente);
         frame1.add(lblBuscar);
         frame1.add(comboBuscar);
@@ -205,16 +157,12 @@ public class VentanaTablaClientes{
         frame1.add(btnEliminar);
         frame1.add(btnVolver);
         frame1.add(btnExportar);
-        
-        
+
         frame1.setVisible(
                 true);
-        
-        
-        
+
 //        nuevoCliente.setVisible(false);
 //        mm.cerrarNuevoCliente();
-        
     }
 
     public JFrame getFrame1() {
@@ -236,15 +184,22 @@ public class VentanaTablaClientes{
     public JTextField getTxtBuscar() {
         return txtBuscar;
     }
-    
-    public void setVisible(boolean b){
+
+    public void setVisible(boolean b) {
         frame1.setVisible(b);
     }
 
     void addClienteRow(String[] cliente) {
         this.getModel().addRow(cliente);
     }
-    
+
+    public void buscar() {
+        String cadena = (txtBuscar.getText());
+        trsFiltro = new TableRowSorter(table.getModel());
+        table.setRowSorter(trsFiltro);
+        filtro();
+    }
+
     public void filtro() {
         int columnaABuscar = 0;
         if (comboBuscar.getSelectedItem().toString() == "Nombre") {
@@ -269,9 +224,82 @@ public class VentanaTablaClientes{
             columnaABuscar = 6;
         }
         trsFiltro.setRowFilter(RowFilter.regexFilter(txtBuscar.getText(), columnaABuscar));
-}
-    
+    }
 
-    
+    public void guardar() {
+        JFileChooser jF1 = new JFileChooser();
+        String ruta = "Gym/gym.txt";
+//            try {
+//                if (jF1.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+//                    ruta = jF1.getSelectedFile().getAbsolutePath(); // /home/.gym
+//                }
+//            } catch (HeadlessException ex) {
+//                ex.printStackTrace();
+//            }
+
+        File filename = new File(ruta);
+
+        JFrame frame1 = new JFrame();
+
+        try {
+
+            try (BufferedWriter bfw = new BufferedWriter(new FileWriter(filename))) {
+                for (int i = 0; i < table.getRowCount(); i++) {
+                    for (int j = 0; j < table.getColumnCount(); j++) {
+                        bfw.write((String) (table.getValueAt(i, j)));
+                        if (j < table.getColumnCount() - 1) {
+                            bfw.write(" - ");
+                        }
+                    }
+                    bfw.newLine();
+                }
+                bfw.close();
+
+            }
+
+            JOptionPane.showMessageDialog(frame1, "Su archivo ha sido guardado");
+
+        } catch (IOException ioe) {
+            System.out.println("Exception Caught : " + ioe.getMessage());
+        }
+    }
+
+    public void importar() throws IOException {
+        int i = 0;
+
+        FileReader myFile = null;
+        try {
+//Leo un Archivo de Texto
+            String file = "Gym/gym.txt";
+            myFile = new FileReader(file);
+            BufferedReader InputFile = new BufferedReader(myFile);
+// Read the first line
+            String currentRecord = InputFile.readLine();
+
+            while (currentRecord != null) {
+                currentRecord = InputFile.readLine();
+
+                try {
+//Copio un valor a la celda
+                    table.setValueAt(currentRecord, 0, i);
+//Refresco la Tabla
+                    table.paintImmediately(table.getX(), table.getY(), table.getWidth(), table.getHeight());
+                    i = i + 1;
+
+                } catch (Exception ex) {
+                }
+
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(VentanaTablaClientes.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                myFile.close();
+            } catch (IOException ex) {
+                Logger.getLogger(VentanaTablaClientes.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+    }
 
 }
