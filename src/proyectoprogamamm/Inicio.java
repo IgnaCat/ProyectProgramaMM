@@ -17,7 +17,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
-import proyectoprogamamm.VentanaTablaClientes;
+import proyectoprogamamm.VentanaTablaClientes ;
+import proyectoprogamamm.VentanaTablaProfesor;
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -34,7 +36,7 @@ public class Inicio {
     private JTabbedPane pane;
     private ImageIcon ii;
     private JLabel lable;
-    
+     VentanaTablaProfesor profesor = new VentanaTablaProfesor();
     public Inicio() {   
         frame = new JFrame("M&M Gym");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,7 +63,16 @@ public class Inicio {
         btnCliente.addActionListener(
                 (ActionEvent e) -> {
 //                    cliente.setVisible(true);
-                    VentanaTablaClientes cliente = new VentanaTablaClientes();
+                   VentanaTablaClientes cliente = new VentanaTablaClientes();
+                   
+                    frame.setVisible(false);
+                }
+        );
+        
+         btnProfesor.addActionListener(
+                (ActionEvent e) -> {
+//                    cliente.setVisible(true);
+                    VentanaTablaProfesor profesor = new VentanaTablaProfesor();
                     frame.setVisible(false);
                 }
         );

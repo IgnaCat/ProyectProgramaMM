@@ -6,14 +6,22 @@
 package proyectoprogamamm;
 
 import java.awt.Color;
+import java.awt.HeadlessException;
+import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -23,7 +31,8 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 
-public class VentanaTablaClientes {
+
+public class VentanaTablaClientes{
     
     private JFrame frame1;
     private JTable table;
@@ -34,6 +43,9 @@ public class VentanaTablaClientes {
     private JComboBox comboBuscar;
     private JLabel lblBuscar;
     private TableRowSorter trsFiltro;
+    private File file;
+    private String nom_files;
+    private Cliente cliente;
     
 //    private static NuevoCliente nuevoCliente = new NuevoCliente();
     
@@ -93,8 +105,53 @@ public class VentanaTablaClientes {
         JButton btnEliminar = new JButton("Eliminar ");
         btnEliminar.setBounds(120, 240, 200, 30);
         
-         JButton btnVolver = new JButton("Volver");
+        JButton btnVolver = new JButton("Volver");
         btnVolver.setBounds(120, 450, 200, 30);
+        
+        JButton btnExportar = new JButton("Exportar");
+        btnExportar.setBounds(120, 500, 200, 30);
+        
+        btnExportar.addActionListener((ActionEvent e) -> {
+            JFileChooser jF1 = new JFileChooser();
+            String ruta = "";
+            try {
+                if (jF1.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+                    ruta = jF1.getSelectedFile().getAbsolutePath();
+                }
+            } catch (HeadlessException ex) {
+                ex.printStackTrace();
+            }
+
+            File filename = new File(ruta);
+            
+            String[] contenido = new String[7];
+//            String[] contenido = cliente.getCampos();
+            contenido[0] = cliente.getNombre();
+            contenido[1] = cliente.getApellido();
+            contenido[2] = cliente.getDni();
+            contenido[3] = cliente.getFechaDia() + "/" + cliente.getFechaMes() + "/" + cliente.getFechaAño();
+            contenido[4] = cliente.getProfesor();
+            contenido[5] = cliente.getDireccion();
+            contenido[6] = cliente.getTelefono();
+
+            JFrame frame1 = new JFrame();
+
+            try {
+
+                try (BufferedWriter fileOut = new BufferedWriter(new FileWriter(filename))) {
+                    for(int i = 0; i<contenido.length;i++){ 
+                        fileOut.write(contenido[i] + " - ");
+                    }
+                }
+
+                JOptionPane.showMessageDialog(frame1, "Su archivo ha sido guardado en el Escritorio");
+                
+
+            } catch (IOException ioe) {
+                System.out.println("Exception Caught : " + ioe.getMessage());
+            }
+        });
+
         
          btnVolver.addActionListener(new ActionListener() {
             @Override
@@ -142,6 +199,7 @@ public class VentanaTablaClientes {
         frame1.add(scroll);
         frame1.add(btnEliminar);
         frame1.add(btnVolver);
+        frame1.add(btnExportar);
         
         
         frame1.setVisible(
