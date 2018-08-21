@@ -53,7 +53,6 @@ public class Inicio {
 
         btnCliente.addActionListener(
                 (ActionEvent e) -> {
-//                    cliente.setVisible(true);
                    VentanaTablaClientes cliente = new VentanaTablaClientes();
                    
                     frame.setVisible(false);
