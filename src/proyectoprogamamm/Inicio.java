@@ -57,11 +57,7 @@ public class Inicio {
         btnCliente.addActionListener(
                 (ActionEvent e) -> {
                    VentanaTablaClientes cliente = new VentanaTablaClientes();
-            try {
-                cliente.importar();
-            } catch (IOException ex) {
-                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                   cliente.importar();
                     frame.setVisible(false);
                 }
         );
