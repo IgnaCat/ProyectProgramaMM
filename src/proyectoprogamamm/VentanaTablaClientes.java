@@ -65,10 +65,11 @@ public class VentanaTablaClientes {
         model.addColumn("Nombre");
         model.addColumn("Apellido");
         model.addColumn("DNI");
+        model.addColumn("Telefono");
         model.addColumn("Fecha de Inicio");
         model.addColumn("Profesor");
         model.addColumn("Direccion");
-        model.addColumn("Telefono");
+        
 
 //        model.addRow(new Object[]{"lol"});
         table.setFont(new java.awt.Font("Tahoma", 30, 15));
@@ -85,10 +86,11 @@ public class VentanaTablaClientes {
         comboBuscar.addItem("Nombre");
         comboBuscar.addItem("Apellido");
         comboBuscar.addItem("DNI");
+        comboBuscar.addItem("Telefono");
         comboBuscar.addItem("Fecha de Inicio");
         comboBuscar.addItem("Profesor");
         comboBuscar.addItem("Direccion");
-        comboBuscar.addItem("Telefono");
+        
         comboBuscar.setBounds(120, 100, 200, 30);
 
         txtBuscar = new JTextField();

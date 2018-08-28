@@ -122,12 +122,13 @@ public class NuevoCliente {
                     Cliente client = new Cliente(getTxtNombre().getText(),
                                     getTxtApellido().getText(),
                                     getTxtDni().getText(),
+                                    getTxtTelefono().getText(),
                                     getTxtFechaDia().getText(),
                                     getTxtFechaMes().getText(),
                                     getTxtFechaAño().getText(),
                                     getTxtProfesor().getSelectedItem().toString(),
-                                    getTxtDireccion().getText(),
-                                    getTxtTelefono().getText());
+                                    getTxtDireccion().getText());
+                                    
                     parent.addClienteRow(client.getCampos());
                 }
         );
