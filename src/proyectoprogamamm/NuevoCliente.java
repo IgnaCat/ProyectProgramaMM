@@ -34,6 +34,7 @@ public class NuevoCliente {
     private JButton btnCancelar;
     private JButton btnAgregar;
     private final VentanaTablaClientes parent;
+    private Profesor profesor;
 
     
     public NuevoCliente(VentanaTablaClientes p) {
@@ -98,7 +99,7 @@ public class NuevoCliente {
         txtFechaAño.setBounds(340, 270, 60, 30);
 
         txtProfesor = new JComboBox();
-        txtProfesor.addItem("lol");
+        txtProfesor.addItem("lel");
         txtProfesor.setBounds(525, 30, 160, 30);
 
         txtDni = new JTextField();
