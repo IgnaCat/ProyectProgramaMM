@@ -64,7 +64,7 @@ public class Inicio {
         
          btnProfesor.addActionListener(
                 (ActionEvent e) -> {
-//                    cliente.setVisible(true);
+
                     VentanaTablaProfesor profesor = new VentanaTablaProfesor();
                     frame.setVisible(false);
                 }

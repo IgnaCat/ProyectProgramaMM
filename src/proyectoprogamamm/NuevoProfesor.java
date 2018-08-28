@@ -22,13 +22,15 @@ public class NuevoProfesor {
     private JTextField txtClase;
     private JButton btnCancelar;
     private JButton btnAgregar;
+    private JLabel lblDni;
+    private JTextField txtDni;
     private final VentanaTablaProfesor parent;
     
     public NuevoProfesor(VentanaTablaProfesor pp) {
         parent = pp;
         frame2 = new JFrame("Nuevo Profesor");
         frame2.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame2.setSize(390, 400);
+        frame2.setSize(390, 450);
         frame2.getContentPane().setBackground(Color.ORANGE);
         frame2.setResizable(false);
 
@@ -45,6 +47,11 @@ public class NuevoProfesor {
         
         lblClase = new JLabel("Tipo De Clase");
         lblClase.setBounds(10, 30, 100, 400);
+        
+        lblDni = new JLabel("Dni");
+        lblDni.setBounds(40, 30, 100, 520);
+        
+        
 
         txtNombre = new JTextField();
         txtNombre.setBounds(110, 30, 160, 30);
@@ -58,12 +65,14 @@ public class NuevoProfesor {
          txtClase = new JTextField();
         txtClase.setBounds(110, 210, 160, 30);
 
+        txtDni = new JTextField();
+        txtDni.setBounds(110, 270,160 , 30);
 
         btnCancelar = new JButton("Cancelar");
-        btnCancelar.setBounds(50, 270, 100, 25);
+        btnCancelar.setBounds(50, 330, 100, 25);
 
         btnAgregar = new JButton("Agregar");
-        btnAgregar.setBounds(190, 270, 100, 25);
+        btnAgregar.setBounds(190, 330, 100, 25);
 
         btnCancelar.addActionListener(
                 (ActionEvent e) -> {
@@ -77,6 +86,7 @@ public class NuevoProfesor {
                     Profesor profe = new Profesor(getTxtNombre().getText(),
                                     getTxtApellido().getText(),
                                     getTxtTelefono().getText(),
+                                    getTxtDni().getText(),
                                     getTxtClase().getText());
                     parent.addClienteRow(profe.getCampos());
                 }
@@ -92,6 +102,8 @@ public class NuevoProfesor {
         frame2.add(btnCancelar);
         frame2.add(lblClase);
         frame2.add(txtClase);
+        frame2.add(lblDni);
+        frame2.add(txtDni);
 
         frame2.setVisible(
                 true);
@@ -149,6 +161,22 @@ public class NuevoProfesor {
 
     public JButton getBtnAgregar() {
         return btnAgregar;
+    }
+
+    public JLabel getLblDni() {
+        return lblDni;
+    }
+
+    public void setLblDni(JLabel lblDni) {
+        this.lblDni = lblDni;
+    }
+
+    public JTextField getTxtDni() {
+        return txtDni;
+    }
+
+    public void setTxtDni(JTextField txtDni) {
+        this.txtDni = txtDni;
     }
 
 }

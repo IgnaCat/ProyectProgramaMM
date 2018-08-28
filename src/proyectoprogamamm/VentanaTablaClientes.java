@@ -161,8 +161,7 @@ public class VentanaTablaClientes {
         frame1.setVisible(
                 true);
 
-//        nuevoCliente.setVisible(false);
-//        mm.cerrarNuevoCliente();
+
     }
 
     public JFrame getFrame1() {

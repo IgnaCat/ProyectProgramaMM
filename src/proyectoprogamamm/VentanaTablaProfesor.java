@@ -47,6 +47,7 @@ public class VentanaTablaProfesor {
         model.addColumn("Nombre");
         model.addColumn("Apellido");
         model.addColumn("Telefono");
+        model.addColumn("Dni");
         model.addColumn("Tipo de Clase");
         
 //        model.addRow(new Object[]{"lol"});
