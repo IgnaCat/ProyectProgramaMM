@@ -48,7 +48,7 @@ public class VentanaTablaClientes {
     private TableRowSorter trsFiltro;
     private String nom_files;
     private Cliente cliente;
-    private static final String file = "Gym/gym.txt";
+    private static final String file = "Gym/cliente.txt";
     private static final String vacio = "empty";
 
 //    private static NuevoCliente nuevoCliente = new NuevoCliente();

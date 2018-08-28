@@ -66,6 +66,7 @@ public class Inicio {
                 (ActionEvent e) -> {
 
                     VentanaTablaProfesor profesor = new VentanaTablaProfesor();
+                    profesor.importar();
                     frame.setVisible(false);
                 }
         );
