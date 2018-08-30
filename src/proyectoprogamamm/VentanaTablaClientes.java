@@ -139,6 +139,7 @@ public class VentanaTablaClientes {
             @Override
             public void actionPerformed(ActionEvent e) {
                 NuevoCliente nuevoCliente = new NuevoCliente(me);
+                nuevoCliente.importarProfesor();
 
             }
         });
@@ -268,6 +269,7 @@ public class VentanaTablaClientes {
         try {
             
             BufferedReader br = new BufferedReader(new FileReader(file));
+            
 
             while ((line = br.readLine()) != null) {
                 Vector data = new Vector();// this is important

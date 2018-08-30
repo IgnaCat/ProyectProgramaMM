@@ -1,6 +1,4 @@
-
 package proyectoprogamamm;
-
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -25,7 +23,7 @@ public class NuevoProfesor {
     private JLabel lblDni;
     private JTextField txtDni;
     private final VentanaTablaProfesor parent;
-    
+
     public NuevoProfesor(VentanaTablaProfesor pp) {
         parent = pp;
         frame2 = new JFrame("Nuevo Profesor");
@@ -44,14 +42,12 @@ public class NuevoProfesor {
 
         lblTelefono = new JLabel("Telefono");
         lblTelefono.setBounds(40, 30, 100, 270);
-        
+
         lblClase = new JLabel("Tipo De Clase");
         lblClase.setBounds(10, 30, 100, 400);
-        
+
         lblDni = new JLabel("Dni");
         lblDni.setBounds(40, 30, 100, 520);
-        
-        
 
         txtNombre = new JTextField();
         txtNombre.setBounds(110, 30, 160, 30);
@@ -61,12 +57,12 @@ public class NuevoProfesor {
 
         txtTelefono = new JTextField();
         txtTelefono.setBounds(110, 150, 160, 30);
-        
-         txtClase = new JTextField();
+
+        txtClase = new JTextField();
         txtClase.setBounds(110, 210, 160, 30);
 
         txtDni = new JTextField();
-        txtDni.setBounds(110, 270,160 , 30);
+        txtDni.setBounds(110, 270, 160, 30);
 
         btnCancelar = new JButton("Cancelar");
         btnCancelar.setBounds(50, 330, 100, 25);
@@ -82,13 +78,7 @@ public class NuevoProfesor {
 
         btnAgregar.addActionListener(
                 (ActionEvent e) -> {
-                    frame2.setVisible(false);
-                    Profesor profe = new Profesor(getTxtNombre().getText(),
-                                    getTxtApellido().getText(),
-                                    getTxtTelefono().getText(),
-                                    getTxtDni().getText(),
-                                    getTxtClase().getText());
-                    parent.addClienteRow(profe.getCampos());
+                    agregar1();
                 }
         );
 
@@ -112,7 +102,6 @@ public class NuevoProfesor {
 //    NuevoProfesor(VentanaTablaProfesor pp) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 //    }
-
     public void setVisible(boolean b) {
         frame2.setVisible(b);
     }
@@ -128,16 +117,14 @@ public class NuevoProfesor {
     public JLabel getLblApellido() {
         return lblApellido;
     }
-  
 
     public JLabel getLblTelefono() {
         return lblTelefono;
     }
-    
-     public JLabel getLblClase() {
+
+    public JLabel getLblClase() {
         return lblClase;
     }
-    
 
     public JTextField getTxtNombre() {
         return txtNombre;
@@ -150,7 +137,7 @@ public class NuevoProfesor {
     public JTextField getTxtTelefono() {
         return txtTelefono;
     }
-    
+
     public JTextField getTxtClase() {
         return txtClase;
     }
@@ -177,6 +164,16 @@ public class NuevoProfesor {
 
     public void setTxtDni(JTextField txtDni) {
         this.txtDni = txtDni;
+    }
+
+    public void agregar1() {
+        frame2.setVisible(false);
+        Profesor profe = new Profesor(getTxtNombre().getText(),
+                getTxtApellido().getText(),
+                getTxtTelefono().getText(),
+                getTxtDni().getText(),
+                getTxtClase().getText());
+        parent.addClienteRow(profe.getCampos());
     }
 
 }

@@ -40,10 +40,9 @@ public class NuevoCliente {
     private JButton btnAgregar;
     private final VentanaTablaClientes parent;
     private NuevoProfesor nuevoprofesor;
-    private static final String file = "Gym/profesor.txt";
+    private static final String file2 = "Gym/profesor.txt";
     private static final String vacio = "empty";
 
-    
     public NuevoCliente(VentanaTablaClientes p) {
         parent = p;
         frame2 = new JFrame("Nuevo Cliente");
@@ -106,7 +105,7 @@ public class NuevoCliente {
         txtFechaAño.setBounds(340, 270, 60, 30);
 
         txtProfesor = new JComboBox();
-        txtProfesor.addItem("");
+//        txtProfesor.addItem("");
         txtProfesor.setBounds(525, 30, 160, 30);
 
         txtDni = new JTextField();
@@ -126,18 +125,7 @@ public class NuevoCliente {
 
         btnAgregar.addActionListener(
                 (ActionEvent e) -> {
-                    frame2.setVisible(false);
-                    Cliente client = new Cliente(getTxtNombre().getText(),
-                                    getTxtApellido().getText(),
-                                    getTxtDni().getText(),
-                                    getTxtTelefono().getText(),
-                                    getTxtFechaDia().getText(),
-                                    getTxtFechaMes().getText(),
-                                    getTxtFechaAño().getText(),
-                                    getTxtProfesor().getSelectedItem().toString(),
-                                    getTxtDireccion().getText());
-                                    
-                    parent.addClienteRow(client.getCampos());
+                    agregar();
                 }
         );
 
@@ -170,7 +158,6 @@ public class NuevoCliente {
 //    NuevoCliente(VentanaTablaProfesor p) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 //    }
-
     public void setVisible(boolean b) {
         frame2.setVisible(b);
     }
@@ -263,37 +250,44 @@ public class NuevoCliente {
         return btnAgregar;
     }
 
-//    public void importarProfesor(){
-//     String line = null;
-//
-//        try {
-//            
-//            BufferedReader br = new BufferedReader(new FileReader(file));
-//
-//            while ((line = br.readLine()) != null) {
-//                Vector data = new Vector();// this is important
-//                StringTokenizer st1 = new StringTokenizer(line, " - ");
-//               
-//                    String nextToken = st1.nextToken();
-//                    if (!nextToken.equals(vacio)){
-//                        data.add(nextToken);
-//                    } else {
-//                        data.add(null);
-//                    }
-//                    System.out.println(nextToken);
-//
-//                
-//                System.out.println(data);
-//                 txtProfesor.addItem(data);
-//                System.out.println(".................................");
-//            }
-//
-//            br.close();
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//
-//    
-//}
+    public void importarProfesor() {
+        try {
+            String line = null;
+            BufferedReader br = new BufferedReader(new FileReader(file2));
+
+            while ((line = br.readLine()) != null) {
+                Vector data = new Vector();// this is important
+                StringTokenizer st1 = new StringTokenizer(line, " - ");
+                String nextToken = st1.nextToken();
+                txtProfesor.addItem(nextToken);//add here 
+                if (!nextToken.equals(vacio)) {
+                    data.add(nextToken);
+                } else {
+                    data.add(null);
+                }
+                System.out.println(nextToken);
+
+            }
+
+            br.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void agregar() {
+        frame2.setVisible(false);
+        Cliente client = new Cliente(getTxtNombre().getText(),
+                getTxtApellido().getText(),
+                getTxtDni().getText(),
+                getTxtTelefono().getText(),
+                getTxtFechaDia().getText(),
+                getTxtFechaMes().getText(),
+                getTxtFechaAño().getText(),
+                getTxtProfesor().getSelectedItem().toString(),
+                getTxtDireccion().getText());
+
+        parent.addClienteRow(client.getCampos());
+    }
 }
