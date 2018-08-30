@@ -2,11 +2,16 @@ package proyectoprogamamm;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.StringTokenizer;
+import java.util.Vector;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 //import proyectoprogamamm.Profesor;
 
 public class NuevoCliente {
@@ -34,7 +39,9 @@ public class NuevoCliente {
     private JButton btnCancelar;
     private JButton btnAgregar;
     private final VentanaTablaClientes parent;
-    private Profesor profesor;
+    private NuevoProfesor nuevoprofesor;
+    private static final String file = "Gym/profesor.txt";
+    private static final String vacio = "empty";
 
     
     public NuevoCliente(VentanaTablaClientes p) {
@@ -99,7 +106,7 @@ public class NuevoCliente {
         txtFechaAño.setBounds(340, 270, 60, 30);
 
         txtProfesor = new JComboBox();
-        txtProfesor.addItem("lel");
+        txtProfesor.addItem("");
         txtProfesor.setBounds(525, 30, 160, 30);
 
         txtDni = new JTextField();
@@ -256,4 +263,37 @@ public class NuevoCliente {
         return btnAgregar;
     }
 
+//    public void importarProfesor(){
+//     String line = null;
+//
+//        try {
+//            
+//            BufferedReader br = new BufferedReader(new FileReader(file));
+//
+//            while ((line = br.readLine()) != null) {
+//                Vector data = new Vector();// this is important
+//                StringTokenizer st1 = new StringTokenizer(line, " - ");
+//               
+//                    String nextToken = st1.nextToken();
+//                    if (!nextToken.equals(vacio)){
+//                        data.add(nextToken);
+//                    } else {
+//                        data.add(null);
+//                    }
+//                    System.out.println(nextToken);
+//
+//                
+//                System.out.println(data);
+//                 txtProfesor.addItem(data);
+//                System.out.println(".................................");
+//            }
+//
+//            br.close();
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//    
+//}
 }
