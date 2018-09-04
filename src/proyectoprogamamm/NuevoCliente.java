@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-//import proyectoprogamamm.Profesor;
+
 
 public class NuevoCliente {
 
@@ -105,7 +105,6 @@ public class NuevoCliente {
         txtFechaAño.setBounds(340, 270, 60, 30);
 
         txtProfesor = new JComboBox();
-//        txtProfesor.addItem("");
         txtProfesor.setBounds(525, 30, 160, 30);
 
         txtDni = new JTextField();
@@ -155,9 +154,7 @@ public class NuevoCliente {
                 true);
     }
 
-//    NuevoCliente(VentanaTablaProfesor p) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
+
     public void setVisible(boolean b) {
         frame2.setVisible(b);
     }
@@ -256,10 +253,10 @@ public class NuevoCliente {
             BufferedReader br = new BufferedReader(new FileReader(file2));
 
             while ((line = br.readLine()) != null) {
-                Vector data = new Vector();// this is important
+                Vector data = new Vector();
                 StringTokenizer st1 = new StringTokenizer(line, " - ");
                 String nextToken = st1.nextToken();
-                txtProfesor.addItem(nextToken);//add here 
+                txtProfesor.addItem(nextToken); 
                 if (!nextToken.equals(vacio)) {
                     data.add(nextToken);
                 } else {

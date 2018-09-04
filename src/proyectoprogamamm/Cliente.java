@@ -1,19 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package proyectoprogamamm;
 
-/**
- *
- * @author ignacio
- */
+
 public class Cliente extends PersonaGym {
     private String fechaDia;
     private String fechaMes;
     private String fechaAño;
-    //private Profesor profesor;
     private String profesor;
     private String direccion;
    
